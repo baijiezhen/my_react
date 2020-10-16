@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import NavLeft from './components/NavLeft'
 
+import Home from './pages/Home'
 
 // import './index.less'
 import './style/common.less'
@@ -14,7 +15,7 @@ export default class Admin extends React.Component{
                  <Col span={4} className="nav-left"><NavLeft></NavLeft></Col>
                  <Col span={20} className="main">
                     <Header></Header>
-                <Row className="content"></Row>   
+                 <Row className="content"><Home></Home></Row>   
                     <Footer></Footer>
        </Col>
       </Row>

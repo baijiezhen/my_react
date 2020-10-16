@@ -17,7 +17,7 @@ export default class NavLeft extends React.Component{
             console.log(item)
             if(item.children){
                 return (
-                    <SubMenu title={item.title} key={item.key}>
+                    <SubMenu title={<span>{item.title}</span>} key={item.key}>
                         { this.renderMenu(item.children)}
                     </SubMenu>
                 )
