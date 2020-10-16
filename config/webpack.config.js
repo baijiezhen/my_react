@@ -110,22 +110,41 @@ module.exports = function(webpackEnv) {
           sourceMap: isEnvProduction && shouldUseSourceMap,
         },
       },
+      {loader:require.resolve('less-loader')}
     ].filter(Boolean);
     if (preProcessor) {
-      loaders.push(
-        {
-          loader: require.resolve('resolve-url-loader'),
-          options: {
-            sourceMap: isEnvProduction && shouldUseSourceMap,
+      if (preProcessor === 'less-loader') {
+        loaders.push(
+          {
+            loader: require.resolve(preProcessor),
+            options: {
+              sourceMap: isEnvProduction && shouldUseSourceMap,
+              modifyVars: {
+                'primary-color': '#000000',
+                'link-color': '#1DA57A',
+                'border-radius-base': '2px',
+              },
+              javascriptEnabled: true,
+            }
+            
+          }
+        );
+      } else {
+        loaders.push(
+          {
+            loader: require.resolve('resolve-url-loader'),
+            options: {
+              sourceMap: isEnvProduction && shouldUseSourceMap,
+            },
           },
-        },
-        {
-          loader: require.resolve(preProcessor),
-          options: {
-            sourceMap: true,
-          },
-        }
-      );
+          {
+            loader: require.resolve(preProcessor),
+            options: {
+              sourceMap: true,
+            },
+          }
+        );
+      }
     }
     return loaders;
   };
@@ -384,6 +403,14 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                  [
+                    "import",
+                    {
+                      libraryName: "antd",
+                      libraryDirectory: "es",
+                      style: true // `style: true` 会加载 less 文件
+                    }
+                  ]
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -492,7 +519,7 @@ module.exports = function(webpackEnv) {
               exclude: lessModuleRegex,
               use: getStyleLoaders(
                 {
-                  importLoaders: 3,
+                  importLoaders: 2,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                 },
                 'less-loader'
@@ -509,7 +536,7 @@ module.exports = function(webpackEnv) {
               test: lessModuleRegex,
               use: getStyleLoaders(
                 {
-                  importLoaders: 3,
+                  importLoaders: 2,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                   modules: {
                     getLocalIdent: getCSSModuleLocalIdent,
@@ -529,7 +556,7 @@ module.exports = function(webpackEnv) {
               // its runtime that would otherwise be processed through "file" loader.
               // Also exclude `html` and `json` extensions so they get processed
               // by webpacks internal loaders.
-              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+              exclude: [/\.(js|mjs|jsx|ts|tsx)$/,/\.less$/, /\.html$/, /\.json$/],
               options: {
                 name: 'static/media/[name].[hash:8].[ext]',
               },
