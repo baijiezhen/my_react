@@ -12,3 +12,4 @@ package.json 中添加
 "style": "css"
 }]
 ]
+2 主页结构分析定义，防止后期重构
