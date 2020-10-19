@@ -3,6 +3,10 @@ import { HashRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Admin from './admin'
 import App from './App'
 import Login from './pages/login'
+import Buttons from './pages/ui/button'
+import Modals from './pages/ui/modals'
+
+import NoMatch from './pages/noMatch'
 export default class IRouter extends React.Component{
 
     render(){
@@ -10,7 +14,15 @@ export default class IRouter extends React.Component{
             <HashRouter>
                 <App>
                   <Route path="/login" component={Login}></Route>
-                  <Route path="/admin" component={Admin}></Route>
+                  <Route path="/admin" render={() =>
+                        <Admin>
+                            <Switch>
+                               <Route path="/admin/ui/buttons" component={Buttons}></Route>
+                               <Route path="/admin/ui/modals" component={Modals}></Route>
+                                <Route component={NoMatch}></Route>
+                             </Switch>
+                            </Admin>
+                        }></Route>
                   {/* <Route path="/login" component={login}></Route> */}
                 </App>
                 {/* <Home>

@@ -13,3 +13,7 @@ package.json 中添加
 }]
 ]
 2 主页结构分析定义，防止后期重构
+
+文件报错
+// var \_createBrowserHistory = require('history/createBrowserHistory');
+import {createBrowserHistory} from 'history';
