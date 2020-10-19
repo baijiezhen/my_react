@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 // import './index.css';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Admin from './admin'
-import Home from './pages/route_demo/route1/Home'
-import IRoute from './pages/route_demo/route3/router'
+// import Admin from './admin'
+// import Home from './pages/route_demo/route1/Home'
+// import IRoute from './pages/route_demo/route3/router'
+import Router from './router'
 ReactDOM.render(
-    <IRoute />,
+    <Router />,
   document.getElementById('root')
 );
 
