@@ -1,10 +1,15 @@
 import React from 'react'
 import { Menu, Icon } from 'antd';
 import { NavLink } from 'react-router-dom'
-import  menuConfig   from './../../config/menuConfig.js'
+import menuConfig from './../../config/menuConfig.js'
+import { connect } from 'react-redux'
+import { switchMenu } from './../../redux/action'
 import './index.less'
 const { SubMenu } = Menu;
-export default class NavLeft extends React.Component{
+ class NavLeft extends React.Component{
+    state = {
+        currentKey: ''
+    }
     componentWillMount() {
         const menuTreeNode = this.renderMenu(menuConfig);
 
@@ -28,15 +33,31 @@ export default class NavLeft extends React.Component{
             </Menu.Item>
         })
     }
+    // 菜单点击
+    handleClick = ({ item, key }) => {
+        if (key == this.state.currentKey) {
+            return false;
+        }
+        // 事件派发，自动调用reducer，通过reducer保存到store对象中
+        const { dispatch } = this.props;
+        
+        dispatch(switchMenu(item.props.title));
+
+        this.setState({
+            currentKey: key
+        });
+        // hashHistory.push(key);
+    };
     render(){
         return <div>
             <div className="logo">
                         <img src="/assets/logo-ant.svg" alt=""/>
                         <h1>Imooc MS</h1>
             </div>
-            <Menu theme="dark" mode="vertical">
+            <Menu theme="dark" mode="vertical" onClick={this.handleClick}>
                  { this.state.menuTreeNode }
             </Menu>
         </div>
     }
 }
+export default connect()(NavLeft)

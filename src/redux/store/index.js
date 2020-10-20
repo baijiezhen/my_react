@@ -3,10 +3,9 @@ import { createStore} from 'redux';
 // 引入所有的reducer
 import reducer from './../reducer';
 console.log(reducer)
+// 安装redux-devtools-extension的可视化工具。
+const { composeWithDevTools } = require('redux-devtools-extension');
 
-const initialState = {
-    menuName: ''
-}
-const store   = createStore(reducer);
+const store   = createStore(reducer,composeWithDevTools());
 export default store;
 
