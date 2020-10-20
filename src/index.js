@@ -7,8 +7,10 @@ import * as serviceWorker from './serviceWorker';
 // import Home from './pages/route_demo/route1/Home'
 // import IRoute from './pages/route_demo/route3/router'
 import Router from './router'
+import { Provider } from 'react-redux'
+import store from './redux/store'
 ReactDOM.render(
-    <Router />,
+  <Provider store={store}> <Router /></Provider>,
   document.getElementById('root')
 );
 

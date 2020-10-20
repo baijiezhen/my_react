@@ -5,15 +5,16 @@ import App from './App'
 import Login from './pages/login'
 import Buttons from './pages/ui/button'
 import Modals from './pages/ui/modals'
-import Loadings from './pages/ui/loadings'
-import Notice from './pages/ui/notice'
-import Tabs from './pages/ui/tabs'
-import Gallery from './pages/ui/gallery'
-import Carousels from './pages/ui/carousel'
-import FormLogin from './pages/form/login'
-import FormRegister from './pages/form/register'
-import BasicTable from './pages/table/basicTable'
-import HighTable from './pages/table/highTable'
+// // import Loadings from './pages/ui/loadings'
+// import Notice from './pages/ui/notice'
+// import Tabs from './pages/ui/tabs'
+// import Gallery from './pages/ui/gallery'
+// import Carousels from './pages/ui/carousel'
+// // import FormLogin from './pages/form/login'
+// // import FormRegister from './pages/form/register'
+// import BasicTable from './pages/table/basicTable'
+// import HighTable from './pages/table/highTable'
+// import RichText from './pages/rich/index'
 
 import NoMatch from './pages/noMatch'
 export default class IRouter extends React.Component{
@@ -23,21 +24,22 @@ export default class IRouter extends React.Component{
             <HashRouter>
                 <App>
                   <Route path="/login" component={Login}></Route>
-                  <Route path="/admin" render={() =>
+                  <Route path="/" render={() =>
                         <Admin>
                             <Switch>
-                               <Route path="/admin/ui/buttons" component={Buttons}></Route>
-                               <Route path="/admin/ui/modals" component={Modals}></Route>
-                               <Route path="/admin/ui/loadings" component={Loadings}></Route>
-                               <Route path="/admin/ui/notification" component={Notice}></Route>
-                               <Route path="/admin/ui/tabs" component={Tabs}></Route>
-                                <Route path="/admin/ui/gallery" component={Gallery}></Route>
-                                <Route path="/admin/ui/carousel" component={Carousels}></Route>
-                                <Route path="/admin/form/login" component={FormLogin}></Route>
-                                <Route path="/admin/form/reg" component={FormRegister}></Route>
-                                <Route path="/admin/table/basic" component={BasicTable}></Route>
-                                <Route path="/admin/table/high" component={HighTable}></Route>
-                                <Route component={NoMatch}></Route>
+                               <Route path="/ui/buttons" component={Buttons}></Route>
+                               <Route path="/ui/modals" component={Modals}></Route>
+                               {/* <Route path="/ui/loadings" component={Loadings}></Route> */}
+                               {/* <Route path="/ui/notification" component={Notice}></Route>
+                               <Route path="/ui/tabs" component={Tabs}></Route>
+                                <Route path="/ui/gallery" component={Gallery}></Route>
+                                <Route path="/ui/carousel" component={Carousels}></Route> */}
+                                {/* <Route path="/form/login" component={FormLogin}></Route>
+                                <Route path="/form/reg" component={FormRegister}></Route> */}
+                                {/* <Route path="/table/basic" component={BasicTable}></Route>
+                                <Route path="/table/high" component={HighTable}></Route>
+                                <Route path="/rich" component={RichText}></Route>
+                                <Route component={NoMatch}></Route> */}
                              </Switch>
                             </Admin>
                         }></Route>

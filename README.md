@@ -17,3 +17,5 @@ package.json 中添加
 文件报错
 // var \_createBrowserHistory = require('history/createBrowserHistory');
 import {createBrowserHistory} from 'history';
+
+redux 基本使用 单向数据流
