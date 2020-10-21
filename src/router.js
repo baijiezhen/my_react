@@ -15,7 +15,7 @@ import Modals from './pages/ui/modals'
 // import BasicTable from './pages/table/basicTable'
 // import HighTable from './pages/table/highTable'
 // import RichText from './pages/rich/index'
-
+import Order from './pages/order/index'
 import NoMatch from './pages/noMatch'
 export default class IRouter extends React.Component{
 
@@ -40,6 +40,7 @@ export default class IRouter extends React.Component{
                                 <Route path="/table/high" component={HighTable}></Route>
                                 <Route path="/rich" component={RichText}></Route>
                                 <Route component={NoMatch}></Route> */}
+                                <Route path="/order" component={Order}></Route>
                              </Switch>
                             </Admin>
                         }></Route>
