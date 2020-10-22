@@ -5,8 +5,12 @@ import menuConfig from "./../../config/menuConfig.js";
 import { connect } from "react-redux";
 import { switchMenu } from "./../../redux/action";
 import PropTypes from "prop-types";
+import { createFromIconfontCN } from "@ant-design/icons";
 import "./index.less";
 const { SubMenu } = Menu;
+const MyIcon = createFromIconfontCN({
+  scriptUrl: "//at.alicdn.com/t/font_1338425_4tmamc43g4w.js", // 在 iconfont.cn 上生成
+});
 class NavLeft extends React.Component {
   state = {
     currentKey: "",
@@ -39,7 +43,11 @@ class NavLeft extends React.Component {
         );
       }
       return (
-        <Menu.Item title={item.title} key={item.key}>
+        <Menu.Item
+          title={item.title}
+          key={item.key}
+          icon={<MyIcon type="icon-dianhuazixun" />}
+        >
           <NavLink to={item.key}>{item.title}</NavLink>
         </Menu.Item>
       );
@@ -62,14 +70,14 @@ class NavLeft extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div className="nav-box">
         <div className="logo">
           <img src="/assets/logo-ant.svg" alt="" />
           <h1>Imooc MS</h1>
         </div>
         <Menu
           theme="dark"
-          mode="vertical"
+          mode="inline"
           onClick={this.handleClick}
           selectedKeys={[this.state.currentKey]}
         >
