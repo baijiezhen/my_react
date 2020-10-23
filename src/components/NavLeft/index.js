@@ -37,7 +37,11 @@ class NavLeft extends React.Component {
       }
       if (item.children) {
         return (
-          <SubMenu title={<span>{item.title}</span>} key={item.key}>
+          <SubMenu
+            title={<span>{item.title}</span>}
+            key={item.key}
+            icon={item.icon ? <MyIcon type={item.icon} /> : ""}
+          >
             {this.renderMenu(item.children)}
           </SubMenu>
         );
@@ -46,7 +50,7 @@ class NavLeft extends React.Component {
         <Menu.Item
           title={item.title}
           key={item.key}
-          icon={<MyIcon type="icon-dianhuazixun" />}
+          icon={item.icon ? <MyIcon type={item.icon} /> : ""}
         >
           <NavLink to={item.key}>{item.title}</NavLink>
         </Menu.Item>
@@ -79,6 +83,7 @@ class NavLeft extends React.Component {
           theme="dark"
           mode="inline"
           onClick={this.handleClick}
+          id="menu-box"
           selectedKeys={[this.state.currentKey]}
         >
           {this.state.menuTreeNode}
